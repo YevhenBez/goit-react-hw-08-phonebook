@@ -1,12 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 const Contacts = lazy(() => import('../pages/contacts/Contacts'));
+const Layout = lazy(() => import('../components/layout/Layout'));
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Contacts />}/>
+
+        <Route path="/" element={<Layout />}>
+          <Route path="contacts" element={<Contacts />} />
+        </Route>
       </Routes>
     </div>
   )

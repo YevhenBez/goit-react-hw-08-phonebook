@@ -1,0 +1,35 @@
+.navLink {
+    /* background-color: #fff; */
+    /* color: #0f1111; */
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 20px 8px 20px;
+    position: relative;
+
+    width: 100px;
+
+    text-decoration: none;
+    /* color: black; */
+    font-weight: 500;
+
+    /* &:focus {
+        color: orange;
+    } */
+
+    /* &:hover {
+        background-color: #f7fafa;
+        text-decoration: underline green;
+        color: green;
+    } */
+
+    /* &:global.active {
+        color: orange;
+    } */
+}
+
+.ul {
+    display: flex;
+    gap: 30px;
+    font-size: 35px;
+    list-style-type: none;
+}
