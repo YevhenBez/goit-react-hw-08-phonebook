@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 const Contacts = lazy(() => import('../pages/contacts/Contacts'));
 const Layout = lazy(() => import('../components/layout/Layout'));
+const Home = lazy(() => import('../pages/home/Home'));
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Routes>
 
         <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="contacts" element={<Contacts />} />
         </Route>
       </Routes>
