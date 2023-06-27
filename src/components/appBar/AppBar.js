@@ -1,8 +1,13 @@
 import MaterialUI from '../../components/MaterialUI';
 import Navigation from '../../components/navigation/Navigation';
 import UserMenu from '../../components/userMenu/UserMenu';
+import AuthMenu from '../../components/authMenu/AuthMenu';
+import { useSelector } from 'react-redux';
+import {selectIsLoggedIn} from '../../redux/selectors';
 
 const AppBar = () => {
+
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <MaterialUI.AppBar>
@@ -13,7 +18,7 @@ const AppBar = () => {
         }}
       >
         <Navigation />
-        <MaterialUI.Toolbar>{<UserMenu />}</MaterialUI.Toolbar>
+        <MaterialUI.Toolbar>{isLoggedIn ? <UserMenu /> : <AuthMenu />}</MaterialUI.Toolbar>
       </MaterialUI.Container>
     </MaterialUI.AppBar>
   );
