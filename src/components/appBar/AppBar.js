@@ -10,7 +10,7 @@ const AppBar = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <MaterialUI.AppBar>
+    <MaterialUI.AppBar position="static">
       <MaterialUI.Container
         sx={{
           display: 'flex',
