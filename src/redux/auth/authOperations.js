@@ -35,3 +35,12 @@ export const logIn = createAsyncThunk(
     }
   }
 );
+
+export const logOut = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
+  try {
+    await axios.post('/users/logout');
+    deleteToken();
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
