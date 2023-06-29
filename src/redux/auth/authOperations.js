@@ -22,3 +22,16 @@ export const registration = createAsyncThunk(
     }
   }
 );
+
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
