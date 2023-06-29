@@ -4,7 +4,7 @@ import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import css from '../../components/navigation/css/navigation.module.css';
 import MaterialUI from '../../components/MaterialUI';
 import { useSelector } from 'react-redux';
-import {selectIsLoggedIn} from '../../redux/selectors';
+import {selectIsLoggedIn} from '../../redux/auth/authSelectors';
 
 const Navigation = () => {
 

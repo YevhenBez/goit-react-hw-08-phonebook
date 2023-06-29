@@ -7,25 +7,25 @@ const handlePending = state => {
 
 const handleFulfilledIn = (state, { payload }) => {
     state.user = payload.user;
-      state.token = payload.token;
+    state.token = payload.token;
     state.isLoggedIn = true;
-    state.isRefreshing = false,
-    state.isLoading = false,
-  state.error = null,
+    state.isRefreshing = false;
+    state.isLoading = false;
+    state.error = null;
 };
 
 const handleFulfilledOut = (state) => {
-    state.isRefreshing = false,
-    state.isLoading = false,
-    state.error = null,
+    state.isRefreshing = false;
+    state.isLoading = false;
+    state.error = null;
     state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
 };
 
 const handleFulfilledCurrent = (state, { payload }) => {
-    state.isLoading = false,
-    state.error = null,
+    state.isLoading = false;
+    state.error = null;
     state.user = payload.user;
       state.isLoggedIn = true;
       state.isRefreshing = false;

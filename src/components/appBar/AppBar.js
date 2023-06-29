@@ -3,7 +3,7 @@ import Navigation from '../../components/navigation/Navigation';
 import UserMenu from '../../components/userMenu/UserMenu';
 import AuthMenu from '../../components/authMenu/AuthMenu';
 import { useSelector } from 'react-redux';
-import {selectIsLoggedIn} from '../../redux/selectors';
+import {selectIsLoggedIn} from '../../redux/auth/authSelectors';
 
 const AppBar = () => {
 
