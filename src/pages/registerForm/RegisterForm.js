@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import MaterialUI from '../../components/MaterialUI';
 import css from '../../pages/registerForm/css/registerForm.module.css';
+import { useDispatch } from 'react-redux';
+import { registration } from '../../redux/auth/authOperations';
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,12 +25,20 @@ const RegisterForm = () => {
   };
 
     // console.log(`name - ${name}; email - ${email}; password - ${password}`)
+  
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(registration({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
     
   return (
     <div>
       <h1>Registration form</h1>
 
-      <form className={css.header}>
+      <form onSubmit={handleSubmit} className={css.header}>
         <label className={css.label}>
           <MaterialUI.TextField
             label="Name"
