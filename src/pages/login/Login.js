@@ -1,8 +1,12 @@
 import MaterialUI from '../../components/MaterialUI';
 import css from '../../pages/login/css/login.module.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/auth/authOperations';
 
 const Login = () => {
+const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,12 +22,19 @@ const Login = () => {
     };
     
     // console.log(`login: ${email}; password: ${password} `)
+  
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(logIn({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <div>
       <h1>Login form</h1>
 
-      <form className={css.form}>
+      <form onSubmit={handleSubmit} className={css.form}>
         <label className={css.label}>
           <MaterialUI.TextField
             label="Email"
