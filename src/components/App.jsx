@@ -5,6 +5,8 @@ const Layout = lazy(() => import('../components/layout/Layout'));
 const Home = lazy(() => import('../pages/home/Home'));
 const RegisterForm = lazy(() => import('../pages/registerForm/RegisterForm'));
 const Login = lazy(() => import('../pages/login/Login'));
+const PrivateRoute = lazy(() => import('../components/PrivateRoute'));
+const PublicRoute = lazy(() => import('../components/PublicRoute'));
 
 const App = () => {
   return (
@@ -13,9 +15,9 @@ const App = () => {
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="register" element={<RegisterForm />} />
-          <Route path="login" element={<Login />} />
-          <Route path="contacts" element={<Contacts />} />
+          <Route path="register" element={<PublicRoute><RegisterForm /></PublicRoute>} />
+          <Route path="login" element={<PublicRoute><Login /></PublicRoute>} />
+          <Route path="contacts" element={<PrivateRoute><Contacts /></PrivateRoute>} />
         </Route>
       </Routes>
     </div>
