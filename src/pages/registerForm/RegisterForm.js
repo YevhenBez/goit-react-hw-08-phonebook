@@ -24,8 +24,8 @@ const RegisterForm = () => {
     }
   };
 
-    // console.log(`name - ${name}; email - ${email}; password - ${password}`)
-  
+  // console.log(`name - ${name}; email - ${email}; password - ${password}`)
+
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(registration({ name, email, password }));
@@ -33,7 +33,7 @@ const RegisterForm = () => {
     setEmail('');
     setPassword('');
   };
-    
+
   return (
     <div>
       <h1>Registration form</h1>

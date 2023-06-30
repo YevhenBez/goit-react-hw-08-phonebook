@@ -27,6 +27,6 @@ const AuthMenu = () => {
       </NavLink>
     </>
   );
-}
+};
 
 export default AuthMenu;

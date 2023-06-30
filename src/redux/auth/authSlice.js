@@ -1,48 +1,53 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registration, logIn, logOut, fetchCurrentUser } from './authOperations';
+import {
+  registration,
+  logIn,
+  logOut,
+  fetchCurrentUser,
+} from './authOperations';
 
 const handlePending = state => {
   state.isLoading = true;
 };
 
 const handleFulfilledIn = (state, { payload }) => {
-    state.user = payload.user;
-    state.token = payload.token;
-    state.isLoggedIn = true;
-    state.isRefreshing = false;
-    state.isLoading = false;
-    state.error = null;
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+  state.isLoading = false;
+  state.error = null;
 };
 
-const handleFulfilledOut = (state) => {
-    state.isRefreshing = false;
-    state.isLoading = false;
-    state.error = null;
-    state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
+const handleFulfilledOut = state => {
+  state.isRefreshing = false;
+  state.isLoading = false;
+  state.error = null;
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
 };
 
 const handleFulfilledCurrent = (state, { payload }) => {
-    state.isLoading = false;
-    state.error = null;
-    state.user = payload;
-      state.isLoggedIn = true;
-      state.isRefreshing = false;
+  state.isLoading = false;
+  state.error = null;
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
 };
 
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-    state.error = payload;
-    state.isRefreshing = false;
+  state.error = payload;
+  state.isRefreshing = false;
 };
 
 const authInitialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-    isRefreshing: false,
-    isLoading: false,
+  isRefreshing: false,
+  isLoading: false,
   error: null,
 };
 

@@ -5,14 +5,12 @@ import Layout from '../components/layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCurrentUser } from '../redux/auth/authOperations';
-import {selectIsRefreshing} from '../redux/auth/authSelectors';
+import { selectIsRefreshing } from '../redux/auth/authSelectors';
 import { lazy } from 'react';
 const Contacts = lazy(() => import('../pages/contacts/Contacts'));
 const Home = lazy(() => import('../pages/home/Home'));
 const RegisterForm = lazy(() => import('../pages/registerForm/RegisterForm'));
 const Login = lazy(() => import('../pages/login/Login'));
-
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,19 +21,41 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   return (
-    !isRefreshing && (<div>
-      <Routes>
-
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="register" element={<PublicRoute><RegisterForm /></PublicRoute>} />
-          <Route path="login" element={<PublicRoute><Login /></PublicRoute>} />
-          <Route path="contacts" element={<PrivateRoute><Contacts /></PrivateRoute>} />
-        </Route>
-      </Routes>
-    </div>)
-  )
-}
+    !isRefreshing && (
+      <div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="register"
+              element={
+                <PublicRoute>
+                  <RegisterForm />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <Contacts />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </div>
+    )
+  );
+};
 
 export default App;
 

@@ -8,7 +8,6 @@ const UserMenu = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-
   return (
     <>
       <MaterialUI.Box
@@ -29,13 +28,13 @@ const UserMenu = () => {
           color="error"
           type="button"
           sx={{ height: 'max-content' }}
-        onClick={() => dispatch(logOut())}
+          onClick={() => dispatch(logOut())}
         >
           Log Out
         </MaterialUI.Button>
       </MaterialUI.Box>
     </>
   );
-}
+};
 
 export default UserMenu;

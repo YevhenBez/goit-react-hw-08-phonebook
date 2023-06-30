@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
 
 const Login = () => {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,10 +19,10 @@ const dispatch = useDispatch();
       default:
         return;
     }
-    };
-    
-    // console.log(`login: ${email}; password: ${password} `)
-  
+  };
+
+  // console.log(`login: ${email}; password: ${password} `)
+
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(logIn({ email, password }));

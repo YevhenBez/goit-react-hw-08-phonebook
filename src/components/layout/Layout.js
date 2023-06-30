@@ -9,9 +9,9 @@ const Layout = () => {
       <header className={css.header}>
         <AppBar />
       </header>
-        <Suspense>
-          <Outlet />
-        </Suspense>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

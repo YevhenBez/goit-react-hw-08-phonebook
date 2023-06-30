@@ -5,7 +5,6 @@ import Loader from '../../components/loader/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/selectors';
 
-
 const Contacts = () => {
   const isLoadingApp = useSelector(selectIsLoading);
 

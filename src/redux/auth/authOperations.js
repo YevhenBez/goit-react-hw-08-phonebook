@@ -12,7 +12,7 @@ const deleteToken = () => {
 
 export const registration = createAsyncThunk(
   'auth/registration',
-    async (credentials, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
       setToken(data.token);
@@ -36,14 +36,17 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
-  try {
-    await axios.post('/users/logout');
-    deleteToken();
-  } catch (error) {
-    return rejectWithValue(error);
+export const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      deleteToken();
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
-});
+);
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
