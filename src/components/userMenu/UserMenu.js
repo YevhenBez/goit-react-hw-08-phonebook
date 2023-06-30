@@ -1,10 +1,13 @@
 import MaterialUI from '../../components/MaterialUI';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useSelector } from 'react-redux';
-import {selectUser} from '../../redux/auth/authSelectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from '../../redux/auth/authSelectors';
+import { logOut } from '../../redux/auth/authOperations';
 
 const UserMenu = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
 
   return (
     <>
@@ -26,7 +29,7 @@ const UserMenu = () => {
           color="error"
           type="button"
           sx={{ height: 'max-content' }}
-        //   onClick={() => dispatch(logOut())}
+        onClick={() => dispatch(logOut())}
         >
           Log Out
         </MaterialUI.Button>
