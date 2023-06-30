@@ -2,6 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../components/PrivateRoute';
 import PublicRoute from '../components/PublicRoute';
 import Layout from '../components/layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCurrentUser } from '../redux/auth/authOperations';
+import {selectIsRefreshing} from '../redux/auth/authSelectors';
 import { lazy } from 'react';
 const Contacts = lazy(() => import('../pages/contacts/Contacts'));
 const Home = lazy(() => import('../pages/home/Home'));
@@ -9,9 +13,17 @@ const RegisterForm = lazy(() => import('../pages/registerForm/RegisterForm'));
 const Login = lazy(() => import('../pages/login/Login'));
 
 
+
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+  const isRefreshing = useSelector(selectIsRefreshing);
+
   return (
-    <div>
+    !isRefreshing && (<div>
       <Routes>
 
         <Route path="/" element={<Layout />}>
@@ -21,7 +33,7 @@ const App = () => {
           <Route path="contacts" element={<PrivateRoute><Contacts /></PrivateRoute>} />
         </Route>
       </Routes>
-    </div>
+    </div>)
   )
 }
 
