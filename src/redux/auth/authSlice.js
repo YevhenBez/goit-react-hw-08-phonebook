@@ -26,7 +26,7 @@ const handleFulfilledOut = (state) => {
 const handleFulfilledCurrent = (state, { payload }) => {
     state.isLoading = false;
     state.error = null;
-    state.user = payload.user;
+    state.user = payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
 };
