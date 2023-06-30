@@ -1,7 +1,10 @@
 import MaterialUI from '../../components/MaterialUI';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useSelector } from 'react-redux';
+import {selectUser} from '../../redux/auth/authSelectors';
 
 const UserMenu = () => {
+  const user = useSelector(selectUser);
 
   return (
     <>
@@ -14,8 +17,8 @@ const UserMenu = () => {
         }}
       >
         <MaterialUI.Box>
-          <p>Hello,  !</p>
-          <p>Email: </p>
+          <p>Hello, {user.name} !</p>
+          <p>Email: {user.email} </p>
         </MaterialUI.Box>
         <MaterialUI.Button
           startIcon={<LogoutIcon />}
